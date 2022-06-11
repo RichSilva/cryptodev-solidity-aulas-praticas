@@ -58,16 +58,12 @@ describe("CryptoToken Contract", function() {
       expect(wallet1BalanceExpected).to.equal(wallet1BalanceResult);
     });
 
-    // EXECUÇÃO PARA NA EXCEÇÃO DO REQUIRE
-    // it("Error - insufficient balance", async () => {
+    it("Error - insufficient balance", async () => {
 
-    //   const expectedResult = "Insufficient Balance to Transfer";
-    //   const transferResult = await token.transfer(wallet1.address, 20000);
+      const expectedResult = "Insufficient Balance to Transfer";
 
-    //   console.log(transferResult);
-
-    //   expect(expectedResult).to.be.revertedWith(transferResult);
-    // });
+      await expect(token.transfer(wallet1.address, 20000)).to.be.revertedWith(expectedResult);
+    });
   });
   
 });
